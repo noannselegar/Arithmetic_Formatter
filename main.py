@@ -1,3 +1,5 @@
 from arithmetic import *
 
-formatter()
+ops = ['123 + 321', '318 - 79', '440 + 1']
+
+formatter(ops)
