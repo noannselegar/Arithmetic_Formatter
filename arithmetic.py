@@ -1,11 +1,26 @@
 def formatter(listOps, ans=False):
-    o = [ops.split() for ops in listOps]
-    width = len(max(o))+5
-    new_line = '\n'
-    hyphen = '-'
-    for x in range(len(listOps)):
-        for i in range(3):
-            print(f'{o[i][x].rjust(width)}', end='')
+    listO = [ops.split() for ops in listOps]
+    listS = [ops.split(maxsplit=1) for ops in listOps]
+    res = list()
+
+    for o in listO:
+        if o[1] == '+':
+            res.append(int(o[0])+int(o[2]))
         else:
-            print(new_line)     
-    #print(o)
+            res.append(int(o[0])-int(o[2]))
+
+    width = len(str(max(res)))*2
+    for x in range(2):
+        for i in range(len(listS)):
+            print(f'{listS[i][x].rjust(width)}', end='')
+        else:
+            print('')
+    else:
+        for _ in range(len(listS)):
+            print(' ', ''.center(width-2, '-'), end='')
+        else:
+            if ans==True:
+                print('')
+                for y in range(len(listS)):
+                    print(' ', str(res[y]).rjust(width-2), end='')
+
